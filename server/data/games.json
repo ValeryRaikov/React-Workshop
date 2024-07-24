@@ -1,0 +1,26 @@
+{
+    "d4751f0c-6328-4e7e-8509-831da3cda68a": {
+        "title": "FIFA 2024",
+        "category": "Sports",
+        "maxLevel": 0,
+        "imageUrl": "https://img.lazcdn.com/g/p/52c0cf9dfbeca8c5cd31a64e08b75fc0.jpg_960x960q80.jpg_.webp",
+        "summary": "EA Sports FC 24 is an association football-themed simulation video game developed by EA Vancouver and EA Romania and published by EA Sports. It is the inaugural installment in the EA Sports FC series,[2] succeeding the FIFA video game series after Electronic Arts's partnership with FIFA concluded with FIFA 23. EA Sports FC 24 is the 31st overall installment of EA Sports' football simulation games, and was released on 29 September 2023 for Nintendo Switch, PlayStation 4, PlayStation 5, Windows, Xbox One, and Xbox Series X/S.",
+        "_id": "d4751f0c-6328-4e7e-8509-831da3cda68a"
+    },
+    "87dc0322-77fe-4136-95f4-fef4561887c9": {
+        "title": "Counter Strike 1.6",
+        "category": "Tactical first-person shooter",
+        "maxLevel": 100,
+        "imageUrl": "https://loadcs.com/img/main.jpg",
+        "summary": "Counter-Strike (also known as Half-Life: Counter-Strike or Counter-Strike 1.6) is a tactical first-person shooter game developed by Valve. It was initially developed and released as a Half-Life modification by Minh 'Gooseman' Le and Jess Cliffe in 1999, before Le and Cliffe were hired and the game's intellectual property acquired. Counter-Strike was released by Valve for Microsoft Windows in November 2000, and is the first installment in the Counter-Strike series. Several remakes and ports were released on Xbox, as well as OS X and Linux.",
+        "_id": "87dc0322-77fe-4136-95f4-fef4561887c9"
+    },
+    "a2344b94-7553-4148-b087-d950dc12a2dc": {
+        "title": "Fortnite",
+        "category": "Survival, battle royale, sandbox",
+        "maxLevel": 50,
+        "imageUrl": "https://cdn1.epicgames.com/offer/fn/Blade_2560x1440_2560x1440-95718a8046a942675a0bc4d27560e2bb",
+        "summary": "Fortnite is an online video game and game platform developed by Epic Games and released in 2017. It is available in six distinct game mode versions that otherwise share the same general gameplay and game engine: Fortnite Battle Royale, a free-to-play battle royale game in which up to 100 players fight to be the last person standing; Fortnite: Save the World, a cooperative hybrid tower defense-shooter and survival game in which up to four players fight off zombie-like creatures and defend objects with traps and fortifications they can build; and Fortnite Creative, in which players are given complete freedom to create worlds and battle arenas, Lego Fortnite, an open world survival game, Rocket Racing, a racing game, and Fortnite Festival, a rhythm game.",
+        "_id": "a2344b94-7553-4148-b087-d950dc12a2dc"
+    }
+}

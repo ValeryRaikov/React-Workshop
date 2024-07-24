@@ -6,6 +6,7 @@ import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Catalogue from './components/catalogue/Catalogue';
 import CreateGame from './components/createGame/CreateGame';
+import DetailsGame from './components/detailsGame/DetailsGame';
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                     <Route path='/register' element={<Register />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/all-games' element={<Catalogue />} />
+                    <Route path='/all-games/:gameId/details' element={<DetailsGame />} />
                     <Route path='/create-game' element={<CreateGame />} />
                 </Routes>
             </main>
