@@ -1,23 +1,29 @@
+import { Link, NavLink } from 'react-router-dom';
+
 export default function Header() {
     return (
         <header>
             {/* Navigation */}
             <h1>
-                <a className="home" href="#">
+                <NavLink 
+                    className="home" 
+                    to="/" 
+                    style={({ isActive}) => isActive ? {color: 'yellow'} : {}}
+                >
                 GamesPlay
-                </a>
+                </NavLink>
             </h1>
             <nav>
-                <a href="#">All games</a>
+                <NavLink to="/all-games" style={({ isActive}) => isActive ? {color: 'yellow'} : {}}>All games</NavLink>
                 {/* Logged-in users */}
                 <div id="user">
-                <a href="#">Create Game</a>
-                <a href="#">Logout</a>
+                <NavLink to="/create-game" style={({ isActive}) => isActive ? {color: 'yellow'} : {}}>Create Game</NavLink>
+                <NavLink to="/logout" style={({ isActive}) => isActive ? {color: 'red'} : {}}>Logout</NavLink>
                 </div>
                 {/* Guest users */}
                 <div id="guest">
-                <a href="#">Login</a>
-                <a href="#">Register</a>
+                <NavLink to="/login" style={({ isActive}) => isActive ? {color: 'green'} : {}}>Login</NavLink>
+                <NavLink to="/register" style={({ isActive}) => isActive ? {color: 'green'} : {}}>Register</NavLink>
                 </div>
             </nav>
             </header>
