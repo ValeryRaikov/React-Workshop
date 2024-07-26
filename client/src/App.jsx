@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { Routes, Route } from 'react-router-dom';
 
 import Header from './components/header/Header';
@@ -17,6 +19,7 @@ function App() {
     }
 
     const contextData = {
+        userId: authState.userId,
         email: authState.email,
         accessToken: authState.accessToken,
         isAuthenticated: !!authState.email,

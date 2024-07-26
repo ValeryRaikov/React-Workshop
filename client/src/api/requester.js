@@ -22,6 +22,10 @@ async function requester(method, url, data) {
 
         const result = await response.json();
 
+        if (!response.ok) {
+            throw result;
+        }
+
         return result;
     } catch (err) {
         console.error(err.message); // Add more precise exception handling...
