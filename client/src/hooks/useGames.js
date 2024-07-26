@@ -29,3 +29,9 @@ export function useGetExactGame(gameId) {
 
     return [game, setGame];
 }
+
+export function useCreateGame(gameData) {
+    const gameCreateHandler = () => gamesAPI.create(gameData);
+
+    return gameCreateHandler;
+}

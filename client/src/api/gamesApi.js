@@ -1,6 +1,6 @@
 import * as request from './requester';
 
-const BASE_URL = 'http://localhost:3030/jsonstore/games';
+const BASE_URL = 'http://localhost:3030/data/games';
 
 export const getAllGames = async () => {
     const result = await request.get(BASE_URL);
@@ -12,9 +12,12 @@ export const getAllGames = async () => {
 
 export const getExactGame = async (gameId) => request.get(`${BASE_URL}/${gameId}`);
 
+export const create = (gameData) => request.post(BASE_URL, gameData);
+
 const gamesAPI = {
     getAllGames,
     getExactGame,
+    create,
 }
 
 export default gamesAPI;
