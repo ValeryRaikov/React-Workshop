@@ -1,21 +1,13 @@
-import { useEffect, useState } from "react";
-import { getExactGame } from "../../api/gamesApi";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import commentsApi from "../../api/commentsApi";
+import { useGetExactGame } from "../../hooks/useGames";
 
 export default function DetailsGame() {
-    const [game, setGame] = useState({});
+    const { gameId } = useParams();
+    const [game, setGame] = useGetExactGame(gameId);
     const [username, setUsername] = useState('');
     const [newComment, setNewComment] = useState('');
-    const { gameId } = useParams();
-
-    useEffect(() => {
-        (async () => {
-            const result = await getExactGame(gameId);
-
-            setGame(result);
-        })();
-    });
 
     const commentSubmitHandler = async (e) => {
         e.preventDefault();
