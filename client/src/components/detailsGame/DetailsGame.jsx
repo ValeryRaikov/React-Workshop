@@ -1,30 +1,26 @@
-import { useState } from "react";
 import { useParams } from "react-router-dom";
-import commentsApi from "../../api/commentsApi";
 import { useGetExactGame } from "../../hooks/useGames";
+import { useForm } from "../../hooks/useForm";
+import { useAuthContext } from "../../contexts/AuthContext";
+import { useCreateCommnet, useGetAllComments } from "../../hooks/useComments";
+
+const initialValues = {
+    comment: '',
+}
 
 export default function DetailsGame() {
     const { gameId } = useParams();
-    const [game, setGame] = useGetExactGame(gameId);
-    const [username, setUsername] = useState('');
-    const [newComment, setNewComment] = useState('');
-
-    const commentSubmitHandler = async (e) => {
-        e.preventDefault();
-
-        await commentsApi.createComment(gameId, username, newComment);
-
-        setGame(prevGame => ({
-            ...prevGame,
-            comments: {
-                ...prevGame.comments,
-                [newComment._id]: newComment,
-            }
-        }));
-
-        setUsername('');
-        setNewComment('');
-    }
+    const [game] = useGetExactGame(gameId);
+    const [comments, setComments] = useGetAllComments(gameId);
+    const createComment = useCreateCommnet();
+    const { isAuthenticated } = useAuthContext();
+    const {
+        values,
+        changeHandler,
+        submitHandler,
+    } = useForm(initialValues, ({ comment }) => {
+        createComment(gameId, comment);
+    });
 
     return (
         <section id="game-details">
@@ -42,16 +38,13 @@ export default function DetailsGame() {
                 <div className="details-comments">
                 <h2>Comments:</h2>
                 <ul>
-                    {game.comments && Object.values(game.comments)?.map(comment => (
+                    {comments.map(comment => (
                         <li className="comment" key={comment._id}>
                         <p>{comment.username}: {comment.text}</p>
                         </li>
                     ))}
                 </ul>
-                {Object.keys(game.comments || {}).length === 0
-                    ? <p className="no-comment">No comments.</p>
-                    : ''
-                }
+                {comments.length === 0 && <p className="no-comment">No comments.</p>}
                 </div>
                 {/* Edit/Delete buttons ( Only for creator of this game )  */}
                 <div className="buttons">
@@ -64,26 +57,21 @@ export default function DetailsGame() {
                 </div>
             </div>
             {/* Bonus */}
-            {/* Add Comment ( Only for logged-in users, which is not creators of the current game ) */}
-            <article className="create-comment">
-                <label>Add new comment:</label>
-                <form className="form" onSubmit={commentSubmitHandler}>
-                <input 
-                    type="text" 
-                    placeholder="Name" 
-                    name="username" 
-                    onChange={(e) => setUsername(e.target.value)}
-                    value={username}
-                />
-                <textarea 
-                    name="comment" 
-                    placeholder="Comment......" 
-                    onChange={(e) => setNewComment(e.target.value)}
-                    value={newComment}
-                />
-                <input className="btn submit" type="submit" defaultValue="Add Comment" />
-                </form>
-            </article>
-            </section>
+            {isAuthenticated && (
+                <article className="create-comment">
+                    <label>Add new comment:</label>
+                    <form className="form" onSubmit={submitHandler}>
+                    <textarea 
+                        name="comment" 
+                        placeholder="Comment......" 
+                        onChange={changeHandler}
+                        value={values.comment}
+                    />
+                    <input className="btn submit" type="submit" defaultValue="Add Comment" />
+                    </form>
+                </article>
+            )}
+
+        </section>
     );
 }

@@ -16,9 +16,13 @@ export default function usePersistedState(key, initialState) {
     const updateState = (value) => {
         const newState = typeof value === 'function' ? value() : value;
 
-        localStorage.setItem(key, JSON.stringify(newState));
+        if (!newState) {
+            localStorage.removeItem(key);
+        } else {
+            localStorage.setItem(key, JSON.stringify(newState));
 
-        setState(newState);
+            setState(newState);
+        }
     }
 
     return [state, updateState];
