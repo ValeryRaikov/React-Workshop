@@ -30,6 +30,10 @@ async function requester(method, url, data) {
             throw new Error('Error fetching data from server!');
         }
 
+        if (!response.status === 204) {
+            return;
+        }
+
         const result = await response.json();
 
         if (!response.ok) {
