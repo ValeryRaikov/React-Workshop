@@ -18,8 +18,14 @@ export default function DetailsGame() {
         values,
         changeHandler,
         submitHandler,
-    } = useForm(initialValues, ({ comment }) => {
-        createComment(gameId, comment);
+    } = useForm(initialValues, async ({ comment }) => {
+        try {
+            const newComment = await createComment(gameId, comment);
+
+            setComments(prevComments => [...prevComments, newComment]);
+        } catch (err) {
+            console.error(err.message);
+        }
     });
 
     return (
