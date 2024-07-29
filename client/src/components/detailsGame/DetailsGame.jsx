@@ -13,6 +13,7 @@ export default function DetailsGame() {
     const [game] = useGetExactGame(gameId);
     const [comments, setComments] = useGetAllComments(gameId);
     const createComment = useCreateCommnet();
+    const { email, userId } = useAuthContext();
     const { isAuthenticated } = useAuthContext();
     const {
         values,
@@ -27,6 +28,8 @@ export default function DetailsGame() {
             console.error(err.message);
         }
     });
+
+    const isOwner = userId === game._ownerId;
 
     return (
         <section id="game-details">
@@ -53,14 +56,16 @@ export default function DetailsGame() {
                 {comments.length === 0 && <p className="no-comment">No comments.</p>}
                 </div>
                 {/* Edit/Delete buttons ( Only for creator of this game )  */}
-                <div className="buttons">
-                <a href="#" className="button">
-                    Edit
-                </a>
-                <a href="#" className="button">
-                    Delete
-                </a>
-                </div>
+                {isOwner && (
+                    <div className="buttons">
+                        <a href="#" className="button">
+                            Edit
+                        </a>
+                        <a href="#" className="button">
+                            Delete
+                        </a>
+                    </div>
+                )}
             </div>
             {/* Bonus */}
             {isAuthenticated && (
