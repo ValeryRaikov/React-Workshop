@@ -6,30 +6,15 @@ import Header from './components/header/Header';
 import Home from './components/home/Home';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
+import Logout from './components/logout/Logout';
 import Catalogue from './components/catalogue/Catalogue';
 import CreateGame from './components/createGame/CreateGame';
 import DetailsGame from './components/detailsGame/DetailsGame';
-import { AuthContext } from './contexts/AuthContext';
+import { AuthContextProvider } from './contexts/AuthContext';
 
 function App() {
-    const [authState, setAuthState] = useState({});
-
-    const changeAuthState = (state) => {
-        localStorage.setItem('accessToken', state.accessToken);
-
-        setAuthState(state);
-    }
-
-    const contextData = {
-        userId: authState.userId,
-        email: authState.email,
-        accessToken: authState.accessToken,
-        isAuthenticated: !!authState.email,
-        changeAuthState,
-    }
-
     return (
-        <AuthContext.Provider value={contextData}>
+        <AuthContextProvider>
             <div id="box">
                 <Header />
 
@@ -38,14 +23,14 @@ function App() {
                         <Route path='/' element={<Home />} />
                         <Route path='/login' element={<Login />} />
                         <Route path='/register' element={<Register />} />
-                        <Route path='/login' element={<Login />} />
+                        <Route path='/logout' element={<Logout />} />
                         <Route path='/all-games' element={<Catalogue />} />
                         <Route path='/all-games/:gameId/details' element={<DetailsGame />} />
                         <Route path='/create-game' element={<CreateGame />} />
                     </Routes>
                 </main>
             </div>
-        </AuthContext.Provider>
+        </AuthContextProvider>
     );
 }
 

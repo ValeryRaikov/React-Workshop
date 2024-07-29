@@ -19,3 +19,5 @@ export const register = async (email, password) => {
 
     return authData;
 }
+
+export const logout = () => requester.get(`${BASE_URL}/logout`);
