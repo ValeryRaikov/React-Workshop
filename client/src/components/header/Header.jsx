@@ -1,13 +1,11 @@
-import { useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthContext';
+import { NavLink } from 'react-router-dom';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 export default function Header() {
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated } = useAuthContext();
 
     return (
         <header>
-            {/* Navigation */}
             <h1>
                 <NavLink 
                     className="home" 
@@ -31,6 +29,6 @@ export default function Header() {
                     </div>
                 )}
             </nav>
-            </header>
+        </header>
     );
 }
