@@ -46,7 +46,7 @@ export default function DetailsGame() {
                 <ul>
                     {comments.map(comment => (
                         <li className="comment" key={comment._id}>
-                        <p>{comment.username}: {comment.text}</p>
+                        <p>{comment.user.username}: {comment.text}</p>
                         </li>
                     ))}
                 </ul>
