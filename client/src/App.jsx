@@ -10,6 +10,7 @@ import Logout from './components/logout/Logout';
 import Catalogue from './components/catalogue/Catalogue';
 import CreateGame from './components/createGame/CreateGame';
 import DetailsGame from './components/detailsGame/DetailsGame';
+import EditGame from './components/editGame/EditGame';
 import { AuthContextProvider } from './contexts/AuthContext';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
                         <Route path='/logout' element={<Logout />} />
                         <Route path='/all-games' element={<Catalogue />} />
                         <Route path='/all-games/:gameId/details' element={<DetailsGame />} />
+                        <Route path='/all-games/:gameId/edit' element={<EditGame />} />
                         <Route path='/create-game' element={<CreateGame />} />
                     </Routes>
                 </main>
