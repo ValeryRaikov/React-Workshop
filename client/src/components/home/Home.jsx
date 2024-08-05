@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllGames } from "../../api/gamesApi";
+import { getLatestGames } from "../../api/gamesApi";
 
 import LatestGame from "./LatestGame";
 
@@ -8,10 +8,10 @@ export default function Home() {
 
     useEffect(() => {
         (async () => {
-            const result = await getAllGames();
+            const result = await getLatestGames();
             // Add error handling logic...
 
-            setLatestGames(result.reverse().slice(0, 3))
+            setLatestGames(result);
         })();
     }, []);
 

@@ -12,6 +12,18 @@ export const getAllGames = async () => {
 
 export const getExactGame = async (gameId) => request.get(`${BASE_URL}/${gameId}`);
 
+export const getLatestGames = async () => {
+    const urlSearchParams = new URLSearchParams({
+        sortBy: '_createdOn desc',
+        pageSize: 3,
+    });
+
+    const result = await request.get(`${BASE_URL}/${urlSearchParams.toString()}`);
+    const latestGames = Object.values(result);
+
+    return latestGames;
+}
+
 export const create = (gameData) => request.post(BASE_URL, gameData);
 
 export const remove = (gameId) => request.del(`${BASE_URL}/${gameId}`);
@@ -21,6 +33,7 @@ export const update = (gameId, gameData) => request.put(`${BASE_URL}/${gameId}`,
 const gamesAPI = {
     getAllGames,
     getExactGame,
+    getLatestGames,
     create,
     remove,
     update,
